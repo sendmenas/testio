@@ -1,0 +1,19 @@
+@import "../../css/_utils";
+
+.input {
+	border-radius: $rounded-corner;
+	border: 2px solid $border-dark;
+	box-shadow: 0 0 0 2px $input-border;
+	height: 40px;
+	width: 200px;
+    outline: none;
+    padding: 0 12px;
+
+    &:hover {
+		box-shadow: 0 0 10px 5px $shadow;
+    }
+
+    &.input--login {
+        margin-bottom: 10px;
+    }
+}
