@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import './Login.scss';
+import Api from '../../api/Api';
 import Input from '../input/Input'
 import Button from '../button/Button';
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.api = new Api('http://playground.tesonet.lt');
+    this.token = null;
+  }
+
   render() {
     return (
       <section className="login-page">
@@ -21,17 +28,35 @@ class Login extends Component {
             subclass="login"
             inputHandler={this.passwordInputHandler}
           />
-          <Button type="login" />
+          <Button type="login" handleClick={this.submitLogin} />
         </section>
       </section>
     );
   }
 
-  userNameInputHandler = (evt) => {
+  submitLogin = () => {
+    this.api
+      .authenticate('user', 'pass')
+      .then(response => {
+        console.log(response);
+        this.token = response.token;
+        this.requestData();
+      });
+  }
+
+  requestData = () => {
+    this.api
+      .requestData(this.token)
+      .then(response => {
+        console.log(response);
+      });
+  }
+
+  userNameInputHandler = evt => {
     console.log(evt.target.value);
   }
 
-  passwordInputHandler = (evt) => {
+  passwordInputHandler = evt => {
     console.log(evt.target.value);
   }
 }

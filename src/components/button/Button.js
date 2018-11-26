@@ -4,7 +4,7 @@ import './Button.scss';
 class Button extends Component {
     render() {
         return (
-            <button className={"button button--" + this.props.type}>Log In</button>
+            <button className={"button button--" + this.props.type} onClick={this.props.handleClick}>Log In</button>
         )
     }
 }
