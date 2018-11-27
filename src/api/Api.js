@@ -30,10 +30,8 @@ class Api {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
+                'Authorization': token,
             },
-            data: {
-                token: token,
-            }
         })
             .then((response) => response.json())
             .then((responseJson) => {
