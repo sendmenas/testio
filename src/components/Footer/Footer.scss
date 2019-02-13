@@ -1,0 +1,135 @@
+@import '../../css/_utils';
+
+.footer {
+	background-color: $shadow;
+	box-shadow: 0 -2px 5px -3px $shadow;
+	color: white;
+	display: flex;
+	height: 148px;
+	margin-top: auto;
+	min-width: $global-width;
+	.footer__left {
+		@extend %flex-column;
+		flex-grow: 1;
+		justify-content: space-between;
+		padding: 15px 0;
+		padding-left: $global-padding;
+	}
+	.footer__center {
+		background-color: $shadow;
+		flex-grow: 1;
+		width: 467px;
+	}
+	.footer__right {
+		flex-grow: 1;
+		padding: 15px $global-padding;
+		width: 375px;
+	}
+}
+
+.left-links {
+	display: flex;
+	flex-direction: column;
+	a {
+		margin-bottom: 5px;
+		color: white;
+		font-size: 15px;
+		cursor: pointer;
+		text-decoration: underline;
+		&:hover {
+			color: $grey;
+			text-shadow: 0 0 10px white;
+		}
+	}
+}
+
+.left-copyright {
+	display: flex;
+	.copyright-label {
+		font-size: 15px;
+		margin-right: 20px;
+	}
+	a {
+		margin-right: 25px;
+		color: white;
+		font-size: 15px;
+		&:hover {
+			color: $grey;
+			text-shadow: 0 0 10px white;
+		}
+	}
+}
+
+.top-box {
+	align-items: center;
+	border-bottom: 3px solid $shadow;
+	display: flex;
+	height: 50%;
+	> div > p {
+		margin: 0;
+	}
+	i {
+		margin: 0px 38px;
+	}
+	.top-box__sync-container {
+		align-items: center;
+		background-color: transparent;
+		border: 0;
+		color: white;
+		cursor: pointer;
+		display: flex;
+		font-size: $default-font-size;
+		justify-content: flex-end;
+		margin-left: auto;
+		margin-right: 28px;
+		outline: none;
+		i {
+			margin: 6px;
+			text-decoration: none;
+		}
+		span {
+			text-decoration: underline;
+			&:hover {
+				color: $grey;
+				text-shadow: 0 0 5px white;
+			}
+		}
+		.sync-animation {
+			animation: spin 1s linear infinite;
+		}
+	}
+}
+
+.bottom-box {
+	align-items: center;
+	display: flex;
+	height: 50%;
+	i {
+		margin: 0 38px;
+	}
+	& * {
+		margin: 0;
+	}
+}
+
+.right-links {
+	display: flex;
+	flex-direction: column;
+	a {
+		color: white;
+		cursor: pointer;
+		font-size: 15px;
+		margin-bottom: 7px;
+		text-decoration: underline;
+		&:hover {
+			color: $grey;
+			text-shadow: 0 0 10px white;
+		}
+	}
+}
+
+@keyframes spin { 
+	100% { 
+		transform: rotate(360deg); 
+	}
+}

@@ -1,12 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './Button.scss';
 
-class Button extends Component {
-    render() {
-        return (
-            <button className={"button button--" + this.props.type} onClick={this.props.handleClick}>Log In</button>
-        )
-    }
-}
+const Button = props => (
+	<button
+		className={'button button--' + props.type}
+		onClick={props.handleClick}
+	>{props.text}</button>
+);
+
+Button.propTypes = {
+	type: PropTypes.string,
+	handleClick: PropTypes.func,
+	text: PropTypes.string
+};
 
 export default Button;
