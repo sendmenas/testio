@@ -1,1 +1,13 @@
 @import '../../css/_utils';
+
+.main {
+	min-width: $global-width;
+	padding: 0 $global-padding 50px;
+	.main__container {
+		display: flex;
+		section {
+			display: flex;
+			flex-grow: 1;
+		}
+	}
+}
