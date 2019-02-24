@@ -27,6 +27,16 @@ class App extends Component {
 		this.setData = this.setData.bind(this);
 		this.setCityFilter = this.setCityFilter.bind(this);
 		this.setDistanceFilter = this.setDistanceFilter.bind(this);
+		this.resetFilter = this.resetFilter.bind(this);
+	}
+
+	resetFilter() {
+		this.setState({
+			filters: {
+				city: null,
+				distance: null,
+			}
+		});
 	}
 
 	updateAuthStatus(value) {
