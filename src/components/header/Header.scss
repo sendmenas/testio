@@ -5,7 +5,7 @@
 	background-color: $header-color;
 	box-shadow: 0 2px $shadow, 0 -2px $shadow inset;
 	display: flex;
-	height: 91px;
+	height: 90px;
 	min-width: $global-width;
 	padding: 0 $global-padding;
 
@@ -23,49 +23,6 @@
 		&::after {
 			content: '.';
 			color: $account-blue;
-		}
-	}
-
-	.header__tabs {
-		background-color: $header-tab-color;
-		border-radius: $rounded-corner;
-		box-shadow: 0 0 10px 5px $shadow;
-		height: 36px;
-		margin-right: 18px;
-		width: 466px;
-		display: flex;
-
-		a {
-			align-items: center;
-			color: white;
-			cursor: pointer;
-			display: flex;
-			flex-grow: 1;
-			font-size: 15px;
-			font-weight: bold;
-			justify-content: center;
-			list-style-type: none;
-			margin: 2px 0;
-			text-transform: uppercase;
-			transition: background-color 0.1s ease-in-out;
-
-			&:hover {
-				background-color: $shadow-light;
-			}
-
-			&:first-child {
-				box-shadow: 2px 0 $light-blue, -2px 0 $shadow inset;
-				border-top-left-radius: $rounded-corner;
-				border-bottom-left-radius: $rounded-corner;
-				margin-left: 2px;
-			}
-
-			&:last-child {
-				box-shadow: -2px 0 $shadow, 2px 0 $light-blue inset;
-				border-top-right-radius: $rounded-corner;
-				border-bottom-right-radius: $rounded-corner;
-				margin-right: 2px;
-			}
 		}
 	}
 

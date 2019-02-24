@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.scss';
 
-const Button = props => (
+const Button = ({ text, type, handleClick }) => (
 	<button
-		className={'button button--' + props.type}
-		onClick={props.handleClick}
-	>{props.text}</button>
+		className={'button button--' + type}
+		onClick={() => handleClick()}
+	>{text}</button>
 );
 
 Button.propTypes = {

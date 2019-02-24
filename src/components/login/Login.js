@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Login.scss';
 import Api from '../../api/Api';
 import Input from '../input/Input';
@@ -14,10 +15,13 @@ class Login extends Component {
 		};
 
 		this.api = new Api('http://playground.tesonet.lt');
+		this.requestData = this.requestData.bind(this);
+		this.userNameInputHandler = this.userNameInputHandler.bind(this);
+		this.passwordInputHandler = this.passwordInputHandler.bind(this);
 	}
 
-	submitLogin() {
-		this.api
+	submitLogin(api) {
+		api
 			.authenticate(this.state.username, this.state.password)
 			.then(response => {
 				if (response.token) {
@@ -39,19 +43,19 @@ class Login extends Component {
 		this.api
 			.requestData(this.state.token)
 			.then(response => {
-				console.log(response);
+				this.props.setData(response);
 			});
 	}
 
-	userNameInputHandler(evt) {
+	userNameInputHandler(value) {
 		this.setState({
-			username: evt.target.value
+			username: value
 		});
 	}
 
-	passwordInputHandler(evt) {
+	passwordInputHandler(value) {
 		this.setState({
-			password: evt.target.value
+			password: value
 		});
 	}
 
@@ -64,23 +68,28 @@ class Login extends Component {
 						type="text"
 						placeholder="Username"
 						subclass="login"
-						inputHandler={(evt) => this.userNameInputHandler(evt)}
+						inputHandler={this.userNameInputHandler}
 					/>
 					<Input
 						type="password"
 						placeholder="Password"
 						subclass="login"
-						inputHandler={(evt) => this.passwordInputHandler(evt)}
+						inputHandler={this.passwordInputHandler}
 					/>
 					<Button
 						type="login"
 						text="Log in"
-						handleClick={() => this.submitLogin()}
+						handleClick={() => this.submitLogin(this.api)}
 					/>
 				</section>
 			</section>
 		);
 	}
 }
+
+Login.propTypes = {
+	updateAuthStatus: PropTypes.func,
+	setData: PropTypes.func,
+};
 
 export default Login;

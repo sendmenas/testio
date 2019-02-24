@@ -4,14 +4,15 @@
 	box-shadow: 0 5px 10px 2px $shadow;
 	border-radius: 8px;
 	border-spacing: 0;
-	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	@include setBox(100%);
 	.data-table__header {
 		align-items: center;
 		color: white;
 		display: flex;
 		flex-grow: 1;
 		font-weight: bold;
-		height: 50px;
 		tr {
 			display: flex;
 			@include setBox(100%);
@@ -21,49 +22,24 @@
 				box-shadow: 2px 0 $light-blue, -2px 0 $shadow-light inset;
 				display: flex;
 				height: 100%;
+				padding-left: 25px;
 				position: relative;
+			}
+			> th:first-child {
+				border-top-left-radius: 8px;
+				width: 50%;
 			}
 			> th:last-child {
 				border: none;
 				box-shadow: none;
-				width: 89px;
+				width: 50%;
+				border-top-right-radius: 8px;
 			}
 			.data-table__header__name {
 				background-color: $list-header-name;
-				border-top-left-radius: 8px;
-				flex-grow: 1;
-				padding-left: 65px;
-				width: 177px;
 			}
-			.data-table__header__surname {
+			.data-table__header__distance {
 				background-color: $list-header-surname;
-				flex-grow: 1;
-				padding-left: 25px;
-				width: 144px;
-			}
-			.data-table__header__city {
-				background-color: $list-header-city;
-				flex-grow: 1;
-				padding-left: 18px;
-				width: 142px;
-			}
-			.data-table__header__email {
-				background-color: $list-header-email;
-				flex-grow: 1;
-				padding-left: 18px;
-				width: 229px;
-			}
-			.data-table__header__phone {
-				background-color: $list-header-phone;
-				flex-grow: 1;
-				justify-content: flex-end;
-				padding-right: 26px;
-				width: 168px;
-			}
-			.data-table__header__actions {
-				background-color: $list-header-actions;
-				border-top-right-radius: 8px;
-				width: 118px;
 			}
 		}
 	}
@@ -73,32 +49,6 @@
 		border-bottom-left-radius: 8px;
 		border-bottom-right-radius: 8px;
 		overflow: auto;
+		height: calc(100% - 50px);
 	}
-}
-
-.sort-arrow-inactive {
-	@include setBox(20px);
-	color: $brown-font;
-	cursor: pointer;
-	position: absolute;
-	right: 10px;
-	top: 15px;
-}
-
-.sort-arrow-desc {
-	@include setBox(20px);
-	color: white;
-	cursor: pointer;
-	position: absolute;
-	right: 10px;
-	top: 15px;
-}
-
-.sort-arrow-asc {
-	@include setBox(20px);
-	color: white;
-	cursor: pointer;
-	position: absolute;
-	right: 10px;
-	top: 15px;
 }

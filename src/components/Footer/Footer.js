@@ -5,14 +5,14 @@ const Footer = () => (
 	<footer className="footer">
 		<section className="footer__left">
 			<nav className="left-links">
-				<a>Dashboard</a>
-				<a>Payments</a>
-				<a>Contacts</a>
+				<a href="/">Dashboard</a>
+				<a href="/">Payments</a>
+				<a href="/">Contacts</a>
 			</nav>
 			<nav className="left-copyright">
 				<span className="copyright-label">&copy; 2015 Contactify</span>
-				<a>About</a>
-				<a>Privacy</a>
+				<a href="/">About</a>
+				<a href="/">Privacy</a>
 			</nav>
 		</section>
 		<section className="footer__center">
@@ -37,7 +37,7 @@ const Footer = () => (
 		</section>
 		<section className="footer__right">
 			<nav className="right-links">
-				<a>Log out</a>
+				<a href="/">Log out</a>
 			</nav>
 		</section>
 	</footer>

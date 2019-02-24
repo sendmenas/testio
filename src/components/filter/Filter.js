@@ -1,29 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import Input from '../input/Input';
+import Button from '../button/Button';
 
 import './Filter.scss';
 
-const Filter = () => (
-    <section className="dashboard__filter">
-        <div className="filter-name">
-            <input className="filter-input" placeholder="Name" type="text" id="nameFilter" />
-        </div>
-        <div className="filter-city" id="cityFilter">
-            <div id="cityFilterSelection">City</div>
-            <i className="fa fa-caret-down" aria-hidden="true"></i>
-            <section className="filter-city__select" id="citySelect">
-                <div>City</div>
-                <div className="cities-container" id="citySelectContainer"></div>
-            </section>
-        </div>
-        <div className="checkbox">
-            <div className="checkbox__input" id="activeCheckboxContainer">
-                <input type="checkbox" id="activeCheckbox" />
-            </div>
-            <div className="checkbox__label">Show active</div>
-        </div>
-        <button className="filter-button" id="filterButton">filter</button>
-        <button className="filter-button" id="resetFilterButton">reset</button>
-    </section>
+const Filter = ({ onCityFilterInput, onDistanceFilterInput }) => (
+	<section className="dashboard__filter">
+		<div className="dashboard__filter__input-container">
+			<Input subclass={'filter-city'} type={'text'} placeholder={'City'} inputHandler={onCityFilterInput} />
+			<Input subclass={'filter-distance'} type={'number'} placeholder={'Distance'} inputHandler={onDistanceFilterInput} />
+		</div>
+		<Button text={'Reset'} />
+	</section>
 );
+
+Filter.propTypes = {
+	onCityFilterInput: PropTypes.func,
+	onDistanceFilterInput: PropTypes.func,
+};
 
 export default Filter;

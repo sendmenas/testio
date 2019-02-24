@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Input.scss';
 
-const Input = props => (
+const Input = ({ subclass, type, placeholder, inputHandler }) => (
 	<input
-		className={'input input--' + props.subclass}
-		type={props.type}
-		placeholder={props.placeholder}
-		onChange={props.inputHandler}
+		className={'input input--' + subclass}
+		type={type}
+		placeholder={placeholder}
+		onChange={evt => inputHandler(evt.target.value)}
 	></input>
 );
 
