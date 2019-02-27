@@ -108,6 +108,7 @@ class App extends Component {
 									data={data}
 									onCityFilterInput={this.setCityFilter}
 									onDistanceFilterInput={this.setDistanceFilter}
+									resetFilter={this.resetFilter}
 									filters={filters}
 								/>
 								: <Redirect to="/login" />

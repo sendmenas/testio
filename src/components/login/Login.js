@@ -18,6 +18,19 @@ class Login extends Component {
 		this.requestData = this.requestData.bind(this);
 		this.userNameInputHandler = this.userNameInputHandler.bind(this);
 		this.passwordInputHandler = this.passwordInputHandler.bind(this);
+		this.checkLocalStorage = this.checkLocalStorage.bind(this);
+	}
+
+	checkLocalStorage() {
+		let storageToken = localStorage.getItem('token');
+		if (storageToken !== null) {
+			this.setState({
+				token: storageToken
+			});
+			this.requestData();
+			this.props.updateAuthStatus(true);
+			// this.props.history.push('/');
+		}
 	}
 
 	submitLogin(api) {
@@ -59,6 +72,10 @@ class Login extends Component {
 		});
 	}
 
+	componentDidMount() {
+		this.checkLocalStorage();		
+	}
+
 	render() {
 		return (
 			<section className="login-page">
@@ -77,9 +94,9 @@ class Login extends Component {
 						inputHandler={this.passwordInputHandler}
 					/>
 					<Button
-						type="login"
+						subclass="login"
 						text="Log in"
-						handleClick={() => this.submitLogin(this.api)}
+						onClick={() => this.submitLogin(this.api)}
 					/>
 				</section>
 			</section>

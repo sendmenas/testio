@@ -8,13 +8,14 @@ import Footer from '../footer/Footer';
 import Filter from '../filter/Filter';
 import DataTable from '../dataTable/DataTable';
 
-const Dashboard = ({ data, onCityFilterInput, onDistanceFilterInput, filters }) => (
+const Dashboard = ({ data, onCityFilterInput, onDistanceFilterInput, resetFilter, filters }) => (
 	<>
 		<Header />
 		<main className="main">
 			<Filter
 				onCityFilterInput={onCityFilterInput}
 				onDistanceFilterInput={onDistanceFilterInput}
+				resetFilter={resetFilter}
 			/>
 			<section className="main__container">
 				<DataTable
