@@ -56,7 +56,12 @@ class Login extends Component {
 		this.api
 			.requestData(this.state.token)
 			.then(response => {
-				this.props.setData(response);
+				if (response.message) {
+					alert(response.message);
+					this.props.updateAuthStatus(false);
+				} else {
+					this.props.setData(response);
+				}
 			});
 	}
 

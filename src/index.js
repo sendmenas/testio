@@ -86,7 +86,6 @@ class App extends Component {
 	render() {
 		let data = this.state.data;
 		let filters = this.state.filters;
-
 		return (
 			<div className="page">
 				<Router>

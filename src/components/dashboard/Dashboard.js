@@ -32,6 +32,7 @@ Dashboard.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.shape()),
 	onCityFilterInput: PropTypes.func,
 	onDistanceFilterInput: PropTypes.func,
+	resetFilter: PropTypes.func,
 	filters: PropTypes.shape({
 		city: PropTypes.string,
 		distance: PropTypes.string
