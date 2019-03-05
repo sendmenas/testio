@@ -5,8 +5,11 @@ import {
 	Route,
 	Redirect
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import * as serviceWorker from './serviceWorker';
 import './index.scss';
+import appReducers from './reducers/reducers';
 
 import Login from './components/login/Login';
 import Dashboard from './components/dashboard/Dashboard';
@@ -15,7 +18,7 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			loggedin: false,
+			authorized: false,
 			data: [],
 			filters: {
 				city: null,
@@ -41,7 +44,7 @@ class App extends Component {
 
 	updateAuthStatus(value) {
 		this.setState({
-			loggedin: value
+			authorized: value
 		});
 	}
 
@@ -102,7 +105,7 @@ class App extends Component {
 							/>}
 						/>
 						<Route path="/dashboard" render={() => (
-							this.state.loggedin
+							this.state.authorized
 								? <Dashboard 
 									data={data}
 									onCityFilterInput={this.setCityFilter}
@@ -119,5 +122,10 @@ class App extends Component {
 	}
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+	<Provider store={createStore(appReducers)}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
+);
 serviceWorker.unregister();

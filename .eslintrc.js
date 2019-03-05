@@ -35,11 +35,12 @@ module.exports = {
     "rules": {
         "indent": [
             "error",
-            "tab"
+            "tab",
+						{ SwitchCase: 1 }
         ],
         "linebreak-style": [
             "error",
-            "windows"
+						"windows"
         ],
         "quotes": [
             "error",
