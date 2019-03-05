@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Input.scss';
+
 class Input extends React.Component {
 	constructor(props) {
 		super(props);
@@ -22,9 +23,9 @@ class Input extends React.Component {
 				onChange={evt => this.props.inputHandler(evt.target.value)}
 				ref={this.input}
 			></input>
-		)
+		);
 	}
-};
+}
 
 Input.propTypes = {
 	subclass: PropTypes.string,
