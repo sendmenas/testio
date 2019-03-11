@@ -115,11 +115,14 @@
 .right-links {
 	display: flex;
 	flex-direction: column;
-	a {
+	button {
+		background: none;
+		border: none;
 		color: white;
 		cursor: pointer;
 		font-size: 15px;
-		margin-bottom: 7px;
+		margin: 0 0 7px auto;
+		outline: none;
 		text-decoration: underline;
 		&:hover {
 			color: $grey;

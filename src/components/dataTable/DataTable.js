@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './DataTable.scss';
 import DataItem from '../dataItem/DataItem';
 
-const DataTable = ({ data, filters }) => (
+const DataTable = ({ data }) => (
 	<section>
 		<table className="data-table">
 			<thead className="data-table__header">
@@ -18,26 +18,10 @@ const DataTable = ({ data, filters }) => (
 				</tr>
 			</thead>
 			<tbody className="data-table__data" id="dataTable">
-				{data.map(({ name, distance }, index) => {
-					for (let item in filters) {
-						if (filters[item] !== null && filters[item] !== '') {
-							if (item === 'city') {
-								if (name.toLowerCase().indexOf(filters[item].toLowerCase()) >= 0) {
-									return <DataItem key={index} name={name} distance={distance} />;
-								} else {
-									return null;
-								}
-							}
-							if (item === 'distance') {
-								if (distance === parseInt(filters[item])) {
-									return <DataItem key={index} name={name} distance={distance} />;
-								} else {
-									return null;
-								}
-							}							
-						}
+				{data.map((item, index) => {
+					if (item !== null) {
+						return <DataItem key={index} name={item.name} distance={item.distance} />;
 					}
-					return <DataItem key={index} name={name} distance={distance} />;
 				})}
 			</tbody>
 		</table>

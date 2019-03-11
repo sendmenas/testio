@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Footer.scss';
 
-const Footer = () => (
+const Footer = ({ lastSyncDate, refreshData, logout }) => (
 	<footer className="footer">
 		<section className="footer__left">
 			<nav className="left-links">
@@ -20,10 +21,10 @@ const Footer = () => (
 				<i className="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
 				<div>
 					<p>Last synced:</p>
-					<p id="syncTimeContainer">Not synced</p>
+					<p>{ lastSyncDate }</p>
 				</div>
-				<button className="top-box__sync-container" id="syncButton">
-					<i className="fa fa-refresh" aria-hidden="true" id="syncIndicator"></i>
+				<button className="top-box__sync-container" onClick={refreshData}>
+					<i className="fa fa-refresh" aria-hidden="true"></i>
 					<span>Force sync</span>
 				</button>
 			</div>
@@ -37,10 +38,16 @@ const Footer = () => (
 		</section>
 		<section className="footer__right">
 			<nav className="right-links">
-				<a href="/">Log out</a>
+				<button onClick={logout}>Log out</button>
 			</nav>
 		</section>
 	</footer>
 );
+
+Footer.propTypes = {
+	lastSyncDate: PropTypes.string,
+	refreshData: PropTypes.func,
+	logout: PropTypes.func
+};
 
 export default Footer;

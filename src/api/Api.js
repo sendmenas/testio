@@ -1,9 +1,15 @@
+import {
+	dataReceived,
+	loginSeccess,
+	fetchData
+} from '../actions/actions';
+
 class Api {
 	constructor(url) {
 		this.url = url;
 	}
 
-	authenticate = (username = 'tesonet', password = 'partyanimal') => {
+	authenticate(username = 'tesonet', password = 'partyanimal', dispatch) {
 		return fetch(this.url + '/v1/tokens', {
 			method: 'POST',
 			headers: {
@@ -15,16 +21,18 @@ class Api {
 				password,
 			}),
 		})
-		.then((response) => response.json())
-		.then((responseJson) => {
-			return responseJson;
-		})
-		.catch((error) => {
-			console.error(error);
-		});
+			.then((response) => response.json())
+			.then((responseJson) => {
+				dispatch(loginSeccess(responseJson.token));
+				dispatch(fetchData(responseJson.token));
+			})
+			.catch((error) => {
+				//eslint-disable-next-line
+				console.error(error);
+			});
 	}
 
-	requestData = token => {
+	requestData(token, dispatch) {
 		return fetch(this.url + '/v1/servers', {
 			method: 'GET',
 			headers: {
@@ -33,13 +41,14 @@ class Api {
 				'Authorization': token,
 			},
 		})
-		.then((response) => response.json())
-		.then((responseJson) => {
-			return responseJson;
-		})
-		.catch((error) => {
-			console.error(error);
-		});
+			.then((response) => response.json())
+			.then((responseJson) => {
+				dispatch(dataReceived(responseJson));
+			})
+			.catch((error) => {
+				//eslint-disable-next-line
+				console.error(error);
+			});
 	}
 }
 

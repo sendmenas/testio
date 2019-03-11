@@ -1,42 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Dashboard.scss';
 
 
 import Header from '../header/Header';
-import Footer from '../footer/Footer';
-import Filter from '../filter/Filter';
-import DataTable from '../dataTable/DataTable';
+import FilterContainer from '../filter/FilterContainer';
+import DataTableContainer from '../dataTable/DataTableContainer';
+import FooterContainer from '../footer/FooterContainer';
 
-const Dashboard = ({ data, onCityFilterInput, onDistanceFilterInput, resetFilter, filters }) => (
+const Dashboard = () => (
 	<>
 		<Header />
 		<main className="main">
-			<Filter
-				onCityFilterInput={onCityFilterInput}
-				onDistanceFilterInput={onDistanceFilterInput}
-				resetFilter={resetFilter}
-			/>
+			<FilterContainer />
 			<section className="main__container">
-				<DataTable
-					data={data}
-					filters={filters}
-				/>
+				<DataTableContainer />
 			</section>
 		</main>
-		<Footer />
+		<FooterContainer />
 	</>
 );
-
-Dashboard.propTypes = {
-	data: PropTypes.arrayOf(PropTypes.shape()),
-	onCityFilterInput: PropTypes.func,
-	onDistanceFilterInput: PropTypes.func,
-	resetFilter: PropTypes.func,
-	filters: PropTypes.shape({
-		city: PropTypes.string,
-		distance: PropTypes.string
-	})
-};
 
 export default Dashboard;

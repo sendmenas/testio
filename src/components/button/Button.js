@@ -5,13 +5,14 @@ import './Button.scss';
 const Button = ({ text, subclass, onClick }) => (
 	<button
 		className={'button button--' + subclass}
-		onClick={() => onClick()}
+		onClick={onClick}
 	>{text}</button>
 );
 
 Button.propTypes = {
 	subclass: PropTypes.string,
 	handleClick: PropTypes.func,
+	onClick: PropTypes.func,
 	text: PropTypes.string
 };
 

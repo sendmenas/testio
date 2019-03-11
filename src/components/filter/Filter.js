@@ -13,8 +13,7 @@ const Filter = ({ onCityFilterInput, onDistanceFilterInput, resetFilter }) => {
 	function resetInputFields() {
 		cityInput.current.clearInput();
 		distanceInput.current.clearInput();
-	};
-
+	}
 
 	return (
 		<section className="dashboard__filter">
@@ -46,6 +45,7 @@ const Filter = ({ onCityFilterInput, onDistanceFilterInput, resetFilter }) => {
 };
 
 Filter.propTypes = {
+	resetFilter: PropTypes.func,
 	onCityFilterInput: PropTypes.func,
 	onDistanceFilterInput: PropTypes.func,
 };
