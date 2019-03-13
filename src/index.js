@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import thunkMidlleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import * as serviceWorker from './serviceWorker';
 import './index.scss';
 import appReducers from './reducers/reducers';
@@ -13,9 +13,15 @@ import AppContainer from './components/app/AppContainer';
 
 const loggerMidlleware = createLogger();
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
 	appReducers,
-	applyMiddleware(thunkMidlleware, loggerMidlleware)
+	composeEnhancers(
+		applyMiddleware(
+			thunkMidlleware,
+			loggerMidlleware
+		)
+	)
 );
 
 if (localStorage.getItem('token') !== null) {
