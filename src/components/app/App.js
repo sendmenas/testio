@@ -6,8 +6,8 @@ import {
 	Redirect
 } from 'react-router-dom';
 
-import LoginPage from '../login/LoginContainer';
-import Dashboard from '../dashboard/Dashboard';
+import LoginPage from '../Login/LoginContainer';
+import Dashboard from '../Dashboard/Dashboard';
 
 const App = ({ isAuthorized }) => (
 	<div className="page">

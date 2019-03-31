@@ -6,6 +6,6 @@ const mapStateToProps = state => ({
 	isAuthorized: state.authorized.isAuthorized
 });
 
-const AppContainer = connect(mapStateToProps, null)(App);
+const AppContainer = connect(mapStateToProps)(App);
 
 export default AppContainer;

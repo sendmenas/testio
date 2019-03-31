@@ -1,0 +1,21 @@
+## Observations and Tips
+
+- components name should use uppercase naming
+- instead selecting directly from state example `AppContainer.js` use selectors
+- `const AppContainer = connect(mapStateToProps, null)(App);` could be changed to `const AppContainer = connect(mapStateToProps)(App);` second parameter is optional.
+
+- `DataTableContainer.js` function `filterItems` should be moved selector. more information https://redux.js.org/recipes/computing-derived-data and https://hackernoon.com/usage-of-reselect-in-a-react-redux-application-fcdca05cc00d
+
+- `DataTableContainer.js` in connect function `let filters = state.filters;` is used, this value never changes so using const keyword looks like better idea.
+
+- `Filter.js` instead reseting filters inside component this should be done in redux layer.
+- `Filter.js` while updating city field, distance field is update too. This looks like a bug.
+- `FilterContainer.js` mapStateToProps always returns empty object, looks like it's not needed.
+- `FooterContainer.js` all data should come from store. All extra information sources like localstorage, cookies etc, should moved to store, in app initialization state.
+- `FooterContainer.js` logout action should be moved to `thunk/saga/redux-observable`
+- `Input.js` rewrite it using react hooks api
+- `LoginContainer.js` properties username and password should be taken from store.
+- `reducers.js` all mutations and side effects should be moved to `thunk/saga/redux-observable` layer. example getTime function, localStorage.setItem()
+
+- `package.json` implement autofix function
+- What's the difference between `.eslintrc.js` and `.eslintrc.json`?

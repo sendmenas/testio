@@ -9,7 +9,7 @@ import './index.scss';
 import appReducers from './reducers/reducers';
 import { loginSeccess, fetchData } from './actions/actions';
 
-import AppContainer from './components/app/AppContainer';
+import AppContainer from './components/App/AppContainer';
 
 const loggerMidlleware = createLogger();
 

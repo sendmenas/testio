@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Login.scss';
-import Input from '../input/Input';
-import Button from '../button/Button';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
 
 const Login = ({ userNameInputHandler, passwordInputHandler, submitLogin }) => (
 	<section className="login-page">

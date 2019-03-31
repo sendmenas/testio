@@ -1,4 +1,5 @@
 import Api from '../api/Api';
+import { createAction } from 'redux-actions';
 
 const url = 'http://playground.tesonet.lt';
 const api = new Api(url);
@@ -15,57 +16,21 @@ export const actions = {
 	LOGOUT: 'LOGOUT',
 };
 
-export const loginAction = () => (
-	{
-		type: actions.LOGIN
-	}
-);
-
-export const loginSeccess = token => (
-	{
-		type: actions.LOGIN_SUCCESS,
-		token
-	}
-);
-
-export const requestData = () => (
-	{
-		type: actions.REQUEST_DATA,
-	}
-);
-
-export const clearData = () => (
-	{
-		type: actions.CLEAR_DATA,
-	}
-);
-
-export const dataReceived = data => (
-	{
-		type: actions.DATA_RECEIVED,
-		data: data
-	}
-);
+export const loginAction = createAction(actions.LOGIN);
+export const loginSeccess = createAction(actions.LOGIN_SUCCESS);
+export const requestData = createAction(actions.REQUEST_DATA);
+export const clearData = createAction(actions.CLEAR_DATA);
+export const dataReceived = createAction(actions.DATA_RECEIVED);
+export const resetFilter = createAction(actions.RESET_FILTER);
+export const logout = createAction(actions.LOGOUT);
 
 export const filterList = (city, distance) => (
 	{
 		type: actions.FILTER_LIST,
-		filter: {
+		payload: {
 			city,
 			distance
 		}
-	}
-);
-
-export const resetFilter = () => (
-	{
-		type: actions.RESET_FILTER
-	}
-);
-
-export const logout = () => (
-	{
-		type: actions.LOGOUT
 	}
 );
 

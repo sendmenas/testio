@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Login from '../login/Login';
+import Login from '../Login/Login';
 import { login } from '../../actions/actions';
 
 let username;

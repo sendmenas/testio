@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './DataTable.scss';
-import DataItem from '../dataItem/DataItem';
+import DataItem from '../DataItem/DataItem';
 
 const DataTable = ({ data }) => (
 	<section>

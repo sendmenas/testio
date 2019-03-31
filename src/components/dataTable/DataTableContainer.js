@@ -21,13 +21,13 @@ const filterItems = (data, filters) => data.map(item => {
 });
 
 const mapStateToProp = state => {
-	let filters = state.filters;
-	let items = state.data.items;
+	const filters = state.filters;
+	const items = state.data.items;
 	return {
 		data: filterItems(items, filters)
 	};
 };
 
-const DataTableContainer = connect(mapStateToProp, null)(DataTable);
+const DataTableContainer = connect(mapStateToProp)(DataTable);
 
 export default DataTableContainer;

@@ -2,10 +2,10 @@ import React from 'react';
 import './Dashboard.scss';
 
 
-import Header from '../header/Header';
-import FilterContainer from '../filter/FilterContainer';
-import DataTableContainer from '../dataTable/DataTableContainer';
-import FooterContainer from '../footer/FooterContainer';
+import Header from '../Header/Header';
+import FilterContainer from '../Filter/FilterContainer';
+import DataTableContainer from '../DataTable/DataTableContainer';
+import FooterContainer from '../Footer/FooterContainer';
 
 const Dashboard = () => (
 	<>

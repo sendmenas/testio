@@ -16,7 +16,7 @@ const authorized = (state = {
 	isAuthorized: false,
 	isDataFetching: false,
 	token: null,
-}, { type, token}) => {
+}, { type, payload}) => {
 	switch (type) {
 		case actions.LOGIN:
 			return {
@@ -25,11 +25,11 @@ const authorized = (state = {
 				token: null,
 			};
 		case actions.LOGIN_SUCCESS:
-			localStorage.setItem('token', token);
+			localStorage.setItem('token', payload);
 			return {
 				isAuthorized: true,
 				isDataFetching: false,
-				token,
+				token: payload,
 			};
 		case actions.LOGOUT:
 			return {
@@ -45,12 +45,12 @@ const authorized = (state = {
 const filters = (state = {
 	city: null,
 	distance: null,
-}, { type, filter}) => {
+}, { type, payload}) => {
 	switch (type) {
 		case actions.FILTER_LIST:
 			return {
-				city: filter.city,
-				distance: filter.distance
+				city: payload.city,
+				distance: payload.distance
 			};
 		case actions.RESET_FILTER:
 			return {
@@ -66,7 +66,7 @@ const data = (state = {
 	isFetching: false,
 	items: [],
 	lastSync: null
-}, { type, data }) => {
+}, { type, payload }) => {
 	switch (type) {
 		case actions.REQUEST_DATA:
 			return Object.assign({}, state, {
@@ -75,11 +75,12 @@ const data = (state = {
 		case actions.DATA_RECEIVED:
 			return Object.assign({}, state, {
 				isFetching: false,
-				items: data,
+				items: payload,
 				lastSync: getTime()
 			});
 		case actions.CLEAR_DATA:
 			return Object.assign({}, state, {
+				isFetching: false,
 				items: [],
 				lastSync: null
 			});
