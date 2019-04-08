@@ -21,8 +21,8 @@ class Api {
 				password,
 			}),
 		})
-			.then((response) => response.json())
-			.then((responseJson) => {
+			.then(response => response.json())
+			.then(responseJson => {
 				dispatch(loginSeccess(responseJson.token));
 				dispatch(fetchData(responseJson.token));
 			})
@@ -41,8 +41,8 @@ class Api {
 				'Authorization': token,
 			},
 		})
-			.then((response) => response.json())
-			.then((responseJson) => {
+			.then(response => response.json())
+			.then(responseJson => {
 				dispatch(dataReceived(responseJson));
 			})
 			.catch((error) => {

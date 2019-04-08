@@ -47,11 +47,14 @@ const filters = (state = {
 	distance: null,
 }, { type, payload}) => {
 	switch (type) {
-		case actions.FILTER_LIST:
-			return {
-				city: payload.city,
-				distance: payload.distance
-			};
+		case actions.SET_CITY_FILTER_LIST:
+			return Object.assign({}, state, {
+				city: payload,
+			});
+		case actions.SET_DISTANCE_FILTER:
+			return Object.assign({}, state, {
+				distance: payload,
+			});
 		case actions.RESET_FILTER:
 			return {
 				city: null,
@@ -89,10 +92,29 @@ const data = (state = {
 	}
 };
 
+const user = (state = {
+	username: '',
+	password: ''
+}, { type, payload}) => {
+	switch (type) {
+		case actions.SET_USERNAME:
+			return Object.assign({}, state, {
+				username: payload
+			});			
+		case actions.SET_PASSWORD:
+			return Object.assign({}, state, {
+				password: payload
+			});			
+		default:
+			return state;
+	}
+};
+
 const appReducers = combineReducers({
 	authorized,
 	filters,
-	data
+	data,
+	user
 });
 
 export default appReducers;

@@ -1,31 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Input.scss';
 
-class Input extends React.Component {
-	constructor(props) {
-		super(props);
+const Input = ({subclass, type, placeholder, inputHandler}) => {
+	const [value, setValue] = useState('');
 
-		this.input = React.createRef();
-		this.clearInput = this.clearInput.bind(this);
-	}
+	const handleValueChange = evt => {
+		setValue(evt.target.value);
+		inputHandler(evt.target.value);
+	};
 
-	clearInput() {
-		this.input.current.value = '';
-	}
-
-	render() {
-		return (
-			<input
-				className={'input input--' + this.props.subclass}
-				type={this.props.type}
-				placeholder={this.props.placeholder}
-				onChange={evt => this.props.inputHandler(evt.target.value)}
-				ref={this.input}
-			></input>
-		);
-	}
-}
+	return (
+		<input
+			className={'input input--' + subclass}
+			type={type}
+			placeholder={placeholder}
+			onChange={evt => handleValueChange(evt)}
+			value={value}
+		></input>
+	);
+};
 
 Input.propTypes = {
 	subclass: PropTypes.string,

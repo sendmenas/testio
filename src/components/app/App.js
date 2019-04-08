@@ -9,7 +9,7 @@ import {
 import LoginPage from '../Login/LoginContainer';
 import Dashboard from '../Dashboard/Dashboard';
 
-const App = ({ isAuthorized }) => (
+const App = ({ username, password, isAuthorized }) => (
 	<div className="page">
 		<Router>
 			<>
@@ -21,7 +21,7 @@ const App = ({ isAuthorized }) => (
 					render={() => (
 						isAuthorized
 							? <Dashboard />
-							: <LoginPage />
+							: <LoginPage username={username} password={password} />
 					)}
 				/>
 				<Route path="/dashboard" render={() => (
@@ -35,6 +35,8 @@ const App = ({ isAuthorized }) => (
 );
 
 App.propTypes = {
+	username: PropTypes.string,
+	password: PropTypes.string,
 	isAuthorized: PropTypes.bool
 };
 

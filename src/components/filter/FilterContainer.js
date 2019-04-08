@@ -1,20 +1,17 @@
 import { connect } from 'react-redux';
 
-import { filterList, resetFilter } from '../../actions/actions';
+import { resetFilter, setCityFilter, setDistanceFilter } from '../../actions/actions';
+import { getCity, getDistance } from '../../selectors';
 import Filter from './Filter';
 
-let city;
-let distance;
-
-const mapStateToProps = state => {
-	city = state.filters.city;
-	distance = state.filters.distance;
-	return {};
-};
+const mapStateToProps = state => ({
+	city: getCity(state),
+	distance: getDistance(state)
+});
 
 const mapDispatchToProps = dispatch => ({
-	onCityFilterInput: value => dispatch(filterList(value, distance)),
-	onDistanceFilterInput: value => dispatch(filterList(city, value)),
+	onCityFilterInput: value => dispatch(setCityFilter(value)),
+	onDistanceFilterInput: value => dispatch(setDistanceFilter(value)),
 	resetFilter: () => dispatch(resetFilter())
 });
 
