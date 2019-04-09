@@ -1,8 +1,7 @@
 ## Observations and Tips
 
-- `FooterContainer.js` all data should come from store. All extra information sources like localstorage, cookies etc, should moved to store, in app initialization state.
-- `FooterContainer.js` logout action should be moved to `thunk/saga/redux-observable`
-- `reducers.js` all mutations and side effects should be moved to `thunk/saga/redux-observable` layer. example getTime function, localStorage.setItem()
-
 - `package.json` implement autofix function
+
+
 - What's the difference between `.eslintrc.js` and `.eslintrc.json`?
+No difference, probably got duplicated while I was playing with linter options
