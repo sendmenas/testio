@@ -19,9 +19,10 @@ const DataTable = ({ data }) => (
 			</thead>
 			<tbody className="data-table__data" id="dataTable">
 				{data.map((item, index) => {
-					if (item !== null) {
-						return <DataItem key={index} name={item.name} distance={item.distance} />;
+					if (item == null) {
+						return null;
 					}
+					return <DataItem key={index} name={item.name} distance={item.distance} />;
 				})}
 			</tbody>
 		</table>

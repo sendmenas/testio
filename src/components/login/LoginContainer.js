@@ -14,9 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	passwordInputHandler: val => dispatch(setPassword(val)),
 });
 
-const LoginPage = connect(
+export default connect(
 	null,
 	mapDispatchToProps
 )(Login);
-
-export default LoginPage;

@@ -1,7 +1,6 @@
 import {
 	dataReceived,
-	loginSeccess,
-	fetchData
+	loginSuccess,
 } from '../actions/actions';
 
 class Api {
@@ -23,8 +22,7 @@ class Api {
 		})
 			.then(response => response.json())
 			.then(responseJson => {
-				dispatch(loginSeccess(responseJson.token));
-				dispatch(fetchData(responseJson.token));
+				dispatch(loginSuccess(responseJson.token));
 			})
 			.catch((error) => {
 				//eslint-disable-next-line

@@ -1,7 +1,46 @@
 ## Observations and Tips
 
-- `package.json` implement autofix function
+- components name should use uppercase naming
+FIXED
 
+- instead selecting directly from state example `AppContainer.js` use selectors
+FIXED
+
+- `const AppContainer = connect(mapStateToProps, null)(App);` could be changed to `const AppContainer = connect(mapStateToProps)(App);` second parameter is optional.
+FIXED
+
+- `DataTableContainer.js` function `filterItems` should be moved selector. more information https://redux.js.org/recipes/computing-derived-data and https://hackernoon.com/usage-of-reselect-in-a-react-redux-application-fcdca05cc00d
+FIXED
+
+- `DataTableContainer.js` in connect function `let filters = state.filters;` is used, this value never changes so using const keyword looks like better idea.
+FIXED
+
+- `Filter.js` instead reseting filters inside component this should be done in redux layer.
+FIXED
+
+- `Filter.js` while updating city field, distance field is update too. This looks like a bug.
+FIXED
+
+- `FilterContainer.js` mapStateToProps always returns empty object, looks like it's not needed.
+FIXED
+
+- `FooterContainer.js` all data should come from store. All extra information sources like localstorage, cookies etc, should moved to store, in app initialization state.
+FIXED
+
+- `FooterContainer.js` logout action should be moved to `thunk/saga/redux-observable`
+FIXED
+
+- `Input.js` rewrite it using react hooks api
+FIXED
+
+- `LoginContainer.js` properties username and password should be taken from store.
+FIXED
+
+- `reducers.js` all mutations and side effects should be moved to `thunk/saga/redux-observable` layer. example getTime function, localStorage.setItem()
+SHAME ON ME FOR THIS ONE, FIXED
+
+- `package.json` implement autofix function
+DONE
 
 - What's the difference between `.eslintrc.js` and `.eslintrc.json`?
-No difference, probably got duplicated while I was playing with linter options
+NO DIFFERENCE, AT SOME POINT I CREATED UNNEEDED FILE, JSON VERSION REMOVED

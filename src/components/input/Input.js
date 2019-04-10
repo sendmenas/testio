@@ -6,8 +6,9 @@ const Input = ({subclass, type, placeholder, inputHandler}) => {
 	const [value, setValue] = useState('');
 
 	const handleValueChange = evt => {
-		setValue(evt.target.value);
-		inputHandler(evt.target.value);
+		const value = evt.target.value;
+		setValue(value);
+		inputHandler(value);
 	};
 
 	return (

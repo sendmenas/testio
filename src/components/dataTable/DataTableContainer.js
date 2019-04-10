@@ -7,6 +7,4 @@ const mapStateToProp = state => ({
 	data: filterItems(state)
 });
 
-const DataTableContainer = connect(mapStateToProp)(DataTable);
-
-export default DataTableContainer;
+export default connect(mapStateToProp)(DataTable);

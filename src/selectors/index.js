@@ -3,9 +3,9 @@ import { createSelector } from 'reselect';
 const getFilters = state => state.filters;
 const getItems = state => state.data.items;
 
-export const getAuthorizationState = state => state.authorized.isAuthorized;
-export const getUsername = state => state.user.username;
-export const getPassword = state => state.user.password;
+export const getUserAuthorizationState = state => state.userAuthorization.isAuthorized;
+export const getUsername = state => state.userAuthorization.username;
+export const getPassword = state => state.userAuthorization.password;
 export const getCity = state => state.filters.city;
 export const getDistance = state => state.filters.distance;
 

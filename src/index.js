@@ -7,7 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import * as serviceWorker from './serviceWorker';
 import './index.scss';
 import appReducers from './reducers/reducers';
-import { loginSeccess, fetchData, checkLocalStorage } from './actions/actions';
+import { checkLocalStorage } from './actions/actions';
 
 import AppContainer from './components/App/AppContainer';
 
@@ -25,10 +25,6 @@ const store = createStore(
 );
 
 store.dispatch(checkLocalStorage());
-// if (localStorage.getItem('token') !== null) {
-// 	store.dispatch(loginSeccess(localStorage.getItem('token')));
-// 	store.dispatch(fetchData(store.getState().authorized.token));
-// }
 
 ReactDOM.render(
 	<Provider store={store}>

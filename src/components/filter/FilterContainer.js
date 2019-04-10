@@ -15,6 +15,4 @@ const mapDispatchToProps = dispatch => ({
 	resetFilter: () => dispatch(resetFilter())
 });
 
-const FilterContainer = connect(mapStateToProps, mapDispatchToProps)(Filter);
-
-export default FilterContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

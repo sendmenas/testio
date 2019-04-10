@@ -21,7 +21,7 @@ export const actions = {
 
 export const checkLocalStorageAction = createAction(actions.CHECK_LOCAL_STORAGE);
 export const loginAction = createAction(actions.LOGIN);
-export const loginSeccessAction = createAction(actions.LOGIN_SUCCESS);
+export const loginSuccessAction = createAction(actions.LOGIN_SUCCESS);
 export const requestData = createAction(actions.REQUEST_DATA);
 export const clearData = createAction(actions.CLEAR_DATA);
 export const dataReceivedAction = createAction(actions.DATA_RECEIVED);
@@ -36,16 +36,16 @@ export const checkLocalStorage = () => {
 	return dispatch => {
 		const token = localStorage.getItem('token');
 		if (token !== null) {
-			dispatch(loginSeccess(token));
-			dispatch(fetchData(token));
+			dispatch(loginSuccess(token));
 		}
 	};
 };
 
-export const loginSeccess = token => {
+export const loginSuccess = token => {
 	return dispatch => {
 		localStorage.setItem('token', token);
-		dispatch(loginSeccessAction(token));
+		dispatch(loginSuccessAction(token));
+		dispatch(fetchData(token));
 	};
 };
 

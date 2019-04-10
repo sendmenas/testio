@@ -1,35 +1,6 @@
 import { combineReducers } from 'redux';
 import { actions } from '../actions/actions';
 
-const authorized = (state = {
-	isAuthorized: false,
-	isDataFetching: false,
-	token: null,
-}, { type, payload}) => {
-	switch (type) {
-		case actions.LOGIN:
-			return {
-				isAuthorized: false,
-				isDataFetching: true,
-				token: null,
-			};
-		case actions.LOGIN_SUCCESS:
-			return {
-				isAuthorized: true,
-				isDataFetching: false,
-				token: payload,
-			};
-		case actions.LOGOUT:
-			return {
-				isAuthorized: false,
-				isDataFetching: false,
-				token: null
-			};
-		default:
-			return state;
-	}
-};
-
 const filters = (state = {
 	city: null,
 	distance: null,
@@ -80,29 +51,49 @@ const data = (state = {
 	}
 };
 
-const user = (state = {
+const userAuthorization = (state = {
+	isAuthorized: false,
+	isDataFetching: false,
+	token: null,
 	username: '',
 	password: ''
-}, { type, payload}) => {
+}, { type, payload }) => {
 	switch (type) {
 		case actions.SET_USERNAME:
 			return Object.assign({}, state, {
 				username: payload
-			});			
+			});
 		case actions.SET_PASSWORD:
 			return Object.assign({}, state, {
 				password: payload
 			});			
+		case actions.LOGIN:
+			return Object.assign({}, state, {
+				isAuthorized: false,
+				isDataFetching: true,
+				token: null,
+			});			
+		case actions.LOGIN_SUCCESS:
+			return Object.assign({}, state, {
+				isAuthorized: true,
+				isDataFetching: false,
+				token: payload,
+			});
+		case actions.LOGOUT:
+			return Object.assign({}, state, {
+				isAuthorized: false,
+				isDataFetching: false,
+				token: null
+			});
 		default:
 			return state;
 	}
 };
 
 const appReducers = combineReducers({
-	authorized,
 	filters,
 	data,
-	user
+	userAuthorization,
 });
 
 export default appReducers;
