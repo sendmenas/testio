@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import thunkMidlleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import * as serviceWorker from './serviceWorker';
 import './index.scss';
-import appReducers from './reducers/reducers';
-import { checkLocalStorage } from './actions/actions';
 
-import AppContainer from './components/App/AppContainer';
+import appReducers from './reducers/reducers';
+import { checkLocalStorage } from './actions';
+import Root from './components/Root';
 
 const loggerMidlleware = createLogger();
 
@@ -27,9 +26,7 @@ const store = createStore(
 store.dispatch(checkLocalStorage());
 
 ReactDOM.render(
-	<Provider store={store}>
-		<AppContainer />
-	</Provider>,
+	<Root store={store} />,
 	document.getElementById('root')
 );
 serviceWorker.unregister();

@@ -4,7 +4,7 @@ import Footer from './Footer';
 import {
 	fetchData,
 	logout,
-} from '../../actions/actions';
+} from '../../actions';
 
 let token;
 
@@ -16,10 +16,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-	refreshData: () => dispatch(fetchData(token)),
-	logout: () => {
-		dispatch(logout());
-	}
+	refreshData() { dispatch(fetchData(token)); },
+	logout() { dispatch(logout()); }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer);

@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 
 import Login from '../Login/Login';
-import { login, setUsername, setPassword } from '../../actions/actions';
+import { setUsername, setPassword, loginAction } from '../../actions';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	submitLogin: () => {
+	submitLogin() {
 		const username = ownProps.username;
 		const password = ownProps.password;
 
-		return dispatch(login(username, password));
+		return dispatch(loginAction(username, password));
 	},
-	userNameInputHandler: val => dispatch(setUsername(val)),
-	passwordInputHandler: val => dispatch(setPassword(val)),
+	userNameInputHandler(val) { dispatch(setUsername(val)); },
+	passwordInputHandler(val) { dispatch(setPassword(val)); },
 });
 
 export default connect(

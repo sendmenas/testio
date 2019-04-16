@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { actions } from '../actions/actions';
+import { actions } from '../actions/constants';
 
 const filters = (state = {
 	city: null,

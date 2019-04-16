@@ -12,7 +12,7 @@ const Filter = ({ city, distance, onCityFilterInput, onDistanceFilterInput, rese
 			<Input
 				subclass={'filter-city'}
 				type={'text'}
-				placeholder={'City'}
+				placeholder={'Country'}
 				inputHandler={onCityFilterInput}
 				value={city}
 			/>

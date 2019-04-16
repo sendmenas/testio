@@ -1,7 +1,7 @@
 import {
-	dataReceived,
+	dataReceivedAction,
 	loginSuccess,
-} from '../actions/actions';
+} from '../actions';
 
 class Api {
 	constructor(url) {
@@ -41,7 +41,7 @@ class Api {
 		})
 			.then(response => response.json())
 			.then(responseJson => {
-				dispatch(dataReceived(responseJson));
+				dispatch(dataReceivedAction(responseJson));
 			})
 			.catch((error) => {
 				//eslint-disable-next-line
