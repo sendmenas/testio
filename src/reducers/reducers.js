@@ -1,18 +1,29 @@
 import { combineReducers } from 'redux';
+import { handleAction } from 'redux-actions';
 import { actions } from '../actions/constants';
 
-const filters = (state = {
+const initialFilterState = {
 	city: null,
 	distance: null,
-}, { type, payload}) => {
-	switch (type) {
-		case actions.SET_CITY_FILTER_LIST:
-			return Object.assign({}, state, {
-				city: payload,
-			});
+};
+
+const setCountryFilterListReducer = handleAction(
+	actions.SET_CITY_FILTER,
+	(state, action) => {
+		return Object.assign({}, state, {
+			city: action.payload,
+		});
+	},
+	initialFilterState
+);
+
+const filters = (state = initialFilterState, action) => {
+	switch (action.type) {
+		case actions.SET_CITY_FILTER:
+			return setCountryFilterListReducer(state, action);
 		case actions.SET_DISTANCE_FILTER:
 			return Object.assign({}, state, {
-				distance: payload,
+				distance: action.payload,
 			});
 		case actions.RESET_FILTER:
 			return {
