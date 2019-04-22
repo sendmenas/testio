@@ -14,7 +14,7 @@ export const {
 	dataReceived,
 	resetFilter,
 	logout,
-	setCityFilter,
+	setCountryFilter,
 	setDistanceFilter,
 	setUsername,
 	setPassword
@@ -27,7 +27,7 @@ export const {
 	actions.DATA_RECEIVED,
 	actions.RESET_FILTER,
 	actions.LOGOUT,
-	actions.SET_CITY_FILTER,
+	actions.SET_COUNTRY_FILTER,
 	actions.SET_DISTANCE_FILTER,
 	actions.SET_USERNAME,
 	actions.SET_PASSWORD

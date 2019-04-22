@@ -6,7 +6,7 @@ const getItems = state => state.data.items;
 export const getUserAuthorizationState = state => state.userAuthorization.isAuthorized;
 export const getUsername = state => state.userAuthorization.username;
 export const getPassword = state => state.userAuthorization.password;
-export const getCity = state => state.filters.city;
+export const getCountry = state => state.filters.country;
 export const getDistance = state => state.filters.distance;
 
 export const filterItems = createSelector(

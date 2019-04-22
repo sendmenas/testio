@@ -1,105 +1,157 @@
 import { combineReducers } from 'redux';
 import { handleAction } from 'redux-actions';
+import reduceReducers from 'reduce-reducers';
+
 import { actions } from '../actions/constants';
 
 const initialFilterState = {
-	city: null,
-	distance: null,
+	country: '',
+	distance: '',
 };
 
 const setCountryFilterListReducer = handleAction(
-	actions.SET_CITY_FILTER,
+	actions.SET_COUNTRY_FILTER,
 	(state, action) => {
 		return Object.assign({}, state, {
-			city: action.payload,
+			country: action.payload,
 		});
 	},
 	initialFilterState
 );
 
-const filters = (state = initialFilterState, action) => {
-	switch (action.type) {
-		case actions.SET_CITY_FILTER:
-			return setCountryFilterListReducer(state, action);
-		case actions.SET_DISTANCE_FILTER:
-			return Object.assign({}, state, {
-				distance: action.payload,
-			});
-		case actions.RESET_FILTER:
-			return {
-				city: null,
-				distance: null,
-			};
-		default:
-			return state;
-	}
-};
+const setDistanceFilterReducer = handleAction(
+	actions.SET_DISTANCE_FILTER,
+	(state, action) => {
+		return Object.assign({}, state, {
+			distance: action.payload,
+		});
+	},
+	initialFilterState
+);
 
-const data = (state = {
+const resetFilterReducer = handleAction(
+	actions.RESET_FILTER,
+	() => initialFilterState,
+	initialFilterState
+);
+
+const filters = reduceReducers(
+	setCountryFilterListReducer,
+	setDistanceFilterReducer,
+	resetFilterReducer
+);
+
+const initialDataState = {
 	isFetching: false,
 	items: [],
 	lastSync: null
-}, { type, payload }) => {
-	switch (type) {
-		case actions.REQUEST_DATA:
-			return Object.assign({}, state, {
-				isFetching: true
-			});
-		case actions.DATA_RECEIVED:
-			return Object.assign({}, state, {
-				isFetching: false,
-				items: payload.items,
-				lastSync: payload.time
-			});
-		case actions.CLEAR_DATA:
-			return Object.assign({}, state, {
-				isFetching: false,
-				items: [],
-				lastSync: null
-			});
-		default:
-			return state;
-	}
 };
 
-const userAuthorization = (state = {
+const requestDataReducer = handleAction(
+	actions.REQUEST_DATA,
+	(state) => {
+		return Object.assign({}, state, {
+			isFetching: true
+		});
+	},
+	initialDataState
+);
+
+const dataReceivedReducer = handleAction(
+	actions.DATA_RECEIVED,
+	(state, action) => {
+		return Object.assign({}, state, {
+			isFetching: false,
+			items: action.payload.items,
+			lastSync: action.payload.time
+		});
+	},
+	initialDataState
+);
+
+const clearDataReducer = handleAction(
+	actions.CLEAR_DATA,
+	() => initialDataState,
+	initialDataState
+);
+
+const data = reduceReducers(
+	requestDataReducer,
+	dataReceivedReducer,
+	clearDataReducer
+);
+
+const initialUserAuthorizationState = {
 	isAuthorized: false,
 	isDataFetching: false,
 	token: null,
 	username: '',
 	password: ''
-}, { type, payload }) => {
-	switch (type) {
-		case actions.SET_USERNAME:
-			return Object.assign({}, state, {
-				username: payload
-			});
-		case actions.SET_PASSWORD:
-			return Object.assign({}, state, {
-				password: payload
-			});			
-		case actions.LOGIN:
-			return Object.assign({}, state, {
-				isAuthorized: false,
-				isDataFetching: true,
-				token: null,
-			});			
-		case actions.LOGIN_SUCCESS:
-			return Object.assign({}, state, {
-				isAuthorized: true,
-				isDataFetching: false,
-				token: payload,
-			});
-		case actions.LOGOUT:
-			return Object.assign({}, state, {
-				isAuthorized: false,
-				isDataFetching: false,
-				token: null
-			});
-		default:
-			return state;
-	}
 };
+
+const setUsernameReducer = handleAction(
+	actions.SET_USERNAME,
+	(state, action) => {
+		return Object.assign({}, state, {
+			username: action.payload
+		});
+	},
+	initialUserAuthorizationState
+);
+
+const setPasswordReducer = handleAction(
+	actions.SET_PASSWORD,
+	(state, action) => {
+		return Object.assign({}, state, {
+			password: action.payload
+		});
+	},
+	initialUserAuthorizationState
+);
+
+const loginReducer = handleAction(
+	actions.LOGIN,
+	(state) => {
+		return Object.assign({}, state, {
+			isAuthorized: false,
+			isDataFetching: true,
+			token: null,
+		});
+	},
+	initialUserAuthorizationState
+);
+
+const loginSuccessReducer = handleAction(
+	actions.LOGIN_SUCCESS,
+	(state, action) => {
+		return Object.assign({}, state, {
+			isAuthorized: true,
+			isDataFetching: false,
+			token: action.payload,
+		});
+	},
+	initialUserAuthorizationState
+);
+
+const logoutReducer = handleAction(
+	actions.LOGOUT,
+	(state) => {
+		return Object.assign({}, state, {
+			isAuthorized: false,
+			isDataFetching: false,
+			token: null
+		});
+	},
+	initialUserAuthorizationState
+);
+
+const userAuthorization = reduceReducers(
+	setUsernameReducer,
+	setPasswordReducer,
+	loginReducer,
+	loginSuccessReducer,
+	logoutReducer
+);
 
 const appReducers = combineReducers({
 	filters,

@@ -3,7 +3,7 @@ import './Dashboard.scss';
 
 
 import Header from '../Header/Header';
-import FilterContainer from '../Filter/FilterContainer';
+import FilterContainer from '../Filter/containers/FilterContainer';
 import DataTableContainer from '../DataTable/DataTableContainer';
 import FooterContainer from '../Footer/FooterContainer';
 
