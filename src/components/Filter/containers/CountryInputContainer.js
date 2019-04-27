@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	inputHandler(value) { dispatch(setCountryFilter(value.target.value)); },
+	inputHandler(val) { dispatch(setCountryFilter(val)); },
 });
 
 export default connect(

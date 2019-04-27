@@ -14,7 +14,7 @@ export const filterItems = createSelector(
 	(filters, items) => items.map(item => {
 		for (let filter in filters) {
 			if (filters[filter] !== null && filters[filter] !== '') {
-				if (filter === 'city') {
+				if (filter === 'country') {
 					if (item.name.toLowerCase().indexOf(filters[filter].toLowerCase()) < 0) {
 						return null;
 					}

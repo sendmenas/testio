@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	inputHandler(val) { dispatch(setUsername(val.target.value)); },
+	inputHandler(val) { dispatch(setUsername(val)); },
 });
 
 export default connect(
