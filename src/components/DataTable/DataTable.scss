@@ -1,0 +1,54 @@
+@import '../../css/_utils';
+
+.data-table {
+	box-shadow: 0 5px 10px 2px $shadow;
+	border-radius: 8px;
+	border-spacing: 0;
+	display: flex;
+	flex-direction: column;
+	@include setBox(100%);
+	.data-table__header {
+		align-items: center;
+		color: white;
+		display: flex;
+		flex-grow: 1;
+		font-weight: bold;
+		tr {
+			display: flex;
+			@include setBox(100%);
+			> th {
+				align-items: center;
+				border-right: 2px solid $light-blue;
+				box-shadow: 2px 0 $light-blue, -2px 0 $shadow-light inset;
+				display: flex;
+				height: 100%;
+				padding-left: 25px;
+				position: relative;
+			}
+			> th:first-child {
+				border-top-left-radius: 8px;
+				width: 50%;
+			}
+			> th:last-child {
+				border: none;
+				box-shadow: none;
+				width: 50%;
+				border-top-right-radius: 8px;
+			}
+			.data-table__header__name {
+				background-color: $list-header-name;
+			}
+			.data-table__header__distance {
+				background-color: $list-header-surname;
+			}
+		}
+	}
+	.data-table__data {
+		@extend %flex-column;
+		background-color: white;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		overflow: auto;
+		height: calc(100% - 50px);
+	}
+}

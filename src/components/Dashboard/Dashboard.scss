@@ -1,0 +1,18 @@
+@import '../../css/_utils';
+
+.main {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 240px);
+	min-width: $global-width;
+	padding: 0 $global-padding 50px;
+	.main__container {
+		display: flex;
+		height: calc(100% - 100px);
+		section {
+			display: flex;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}

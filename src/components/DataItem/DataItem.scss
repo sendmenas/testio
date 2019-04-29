@@ -1,0 +1,27 @@
+@import '../../css/_utils';
+
+.data-item {
+	border-bottom: 2px solid $shadow-light;
+	color: $brown-font;
+	cursor: pointer;
+	display: flex;
+	height: 43px;
+	width: 100%;
+	> th {
+		align-items: center;
+		display: flex;
+		font-weight: normal;
+		height: 100%;
+	}
+	&:hover {
+		background-color: $list-hover;
+	}
+	.data-item__name {
+		padding-left: 25px;
+		width: 50%
+	}
+	.data-item__distance {
+		padding-left: 25px;
+		width: 50%;
+	}
+}

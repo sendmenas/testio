@@ -1,0 +1,29 @@
+@import '../../css/_utils';
+
+.button {
+	align-items: center;
+	background-color: initial;
+	border: 2px solid $button-border;
+	border-radius: $rounded-corner;
+	box-shadow: 0 0 10px $shadow;
+	color: white;
+	cursor: pointer;
+	display: flex;
+	font-size: 15px;
+	font-weight: bold;
+	height: 36px;
+	justify-content: center;
+	outline: none;
+	text-transform: uppercase;
+	width: 200px;
+	&:active {
+		transform: scale(0.95);
+	}
+	&:hover {
+		background-color: $shadow-light;
+    }
+    
+    &.button--login {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,12 @@
+@import '../../css/_utils';
+
+.dashboard__filter {
+    display: flex;
+    height: 100px;
+		padding-top: 25px;
+		.dashboard__filter__input-container {
+			.input {
+				margin-right: 25px;
+			}
+		}
+}
