@@ -1,4 +1,4 @@
-import Api from '../api/Api';
+import Api from '../api/api';
 import { createActions } from 'redux-actions';
 
 import { actions } from './constants';
