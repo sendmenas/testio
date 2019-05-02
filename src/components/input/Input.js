@@ -7,7 +7,7 @@ const Input = ({value, subclass, type, placeholder, inputHandler}) => (
 		className={'input input--' + subclass}
 		type={type}
 		placeholder={placeholder}
-		onChange={evt => inputHandler(evt.target.value)}
+		onChange={evt => inputHandler(evt)}
 		value={value}
 	/>
 );
