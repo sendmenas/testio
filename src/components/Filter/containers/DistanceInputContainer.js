@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	onDistanceFilterInput: evt => dispatch(setDistanceFilter(evt.target.value)),
+	onDistanceFilterInput: val => dispatch(setDistanceFilter(val)),
 });
 
 export default connect(
