@@ -15,7 +15,7 @@ const Filter = ({ resetFilter }) => (
 		</div>
 		<Button
 			text={'Reset'}
-			onClick={() => resetFilter()}
+			onClick={resetFilter}
 		/>
 	</section>
 );
